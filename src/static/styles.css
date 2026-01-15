@@ -1,3 +1,20 @@
+.message {
+  z-index: 1000;
+}
+
+#global-message {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  max-width: 90vw;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,61,122,0.12);
+  font-size: 1.05rem;
+  padding: 14px 24px;
+  opacity: 0.98;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -53,9 +70,10 @@ header {
 
 main {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   gap: 30px;
-  justify-content: center;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -64,13 +82,13 @@ main {
   }
 }
 
-section {
   background-color: white;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 61, 122, 0.08);
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
+  margin-bottom: 20px;
 }
 
 section h3 {
@@ -81,14 +99,65 @@ section h3 {
   font-size: 1.4rem;
 }
 
+/* Card-based layout for capabilities */
 .capability-card {
-  margin-bottom: 20px;
-  padding: 20px;
+  margin-bottom: 30px;
+  padding: 24px 24px 18px 24px;
   border: 2px solid #e3f2fd;
-  border-radius: 10px;
+  border-radius: 14px;
   background: linear-gradient(145deg, #ffffff, #f8f9fa);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 61, 122, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.register-container {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px dashed #0066cc;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.register-form .form-group label {
+  font-size: 1rem;
+  color: #003d7a;
+}
+
+.register-form input[type="email"] {
+  padding: 10px;
+  border: 1px solid #b3c6e0;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.register-form button[type="submit"] {
+  background: linear-gradient(135deg, #003d7a, #0066cc);
+  color: white;
+  border: none;
+  padding: 10px 0;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 5px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.register-form button[type="submit"]:hover {
+  background: linear-gradient(135deg, #0066cc, #1976d2);
+  box-shadow: 0 2px 6px rgba(0, 61, 122, 0.15);
+}
+
+.register-form .message {
+  margin-top: 10px;
+  font-size: 0.95rem;
 }
 
 .capability-card:hover {
@@ -286,22 +355,36 @@ footer {
 }
 
 /* Responsive design improvements */
+@media (max-width: 900px) {
+  section {
+    max-width: 98vw;
+    padding: 10px;
+  }
+  .capability-card {
+    padding: 12px 8px 10px 8px;
+  }
+}
+
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
     gap: 10px;
   }
-  
   .mascot {
     width: 60px;
     height: 60px;
   }
-  
   .header-text h1 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
-  
   .header-text h2 {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+  .capability-card {
+    padding: 8px 4px 8px 4px;
+    font-size: 0.98rem;
+  }
+  .register-form input[type="email"] {
+    font-size: 0.95rem;
   }
 }
