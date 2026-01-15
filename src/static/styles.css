@@ -1,3 +1,20 @@
+.message {
+  z-index: 1000;
+}
+
+#global-message {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  max-width: 90vw;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,61,122,0.12);
+  font-size: 1.05rem;
+  padding: 14px 24px;
+  opacity: 0.98;
+}
 * {
   box-sizing: border-box;
   margin: 0;

@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = event.target;
     const capability = button.getAttribute("data-capability");
     const email = button.getAttribute("data-email");
+    const globalMessage = document.getElementById("global-message");
 
     try {
       const response = await fetch(
@@ -131,26 +132,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
 
       if (response.ok) {
-        messageDiv.textContent = result.message;
-        messageDiv.className = "success";
-
-        // Refresh capabilities list to show updated consultants
+        globalMessage.textContent = result.message || "Consultant removed.";
+        globalMessage.className = "message success";
         fetchCapabilities();
       } else {
-        messageDiv.textContent = result.detail || "An error occurred";
-        messageDiv.className = "error";
+        globalMessage.textContent = result.detail || "An error occurred";
+        globalMessage.className = "message error";
       }
 
-      messageDiv.classList.remove("hidden");
-
-      // Hide message after 5 seconds
+      globalMessage.classList.remove("hidden");
       setTimeout(() => {
-        messageDiv.classList.add("hidden");
+        globalMessage.classList.add("hidden");
       }, 5000);
     } catch (error) {
-      messageDiv.textContent = "Failed to unregister. Please try again.";
-      messageDiv.className = "error";
-      messageDiv.classList.remove("hidden");
+      globalMessage.textContent = "Failed to unregister. Please try again.";
+      globalMessage.className = "message error";
+      globalMessage.classList.remove("hidden");
       console.error("Error unregistering:", error);
     }
   }
